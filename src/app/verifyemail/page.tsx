@@ -9,7 +9,7 @@ export default function VerifyEmailPage() {
 
     // const router=useRouter();
 
-    const [token, setToken] = useState('');
+    const [token, setToken] = useState<string>('');
     const [verified, setVerified] = useState(false);
     const [error, setError] = useState(false);
 
