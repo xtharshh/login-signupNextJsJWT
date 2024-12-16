@@ -1,17 +1,32 @@
 import nodemailer from 'nodemailer';
 import User from '@/models/userModel';
 import bcryptjs from 'bcryptjs';
+
+
 export const sendEmail=async({email,emailType,userId}:any)=>{
 
     try{
         const hashedToken=await bcryptjs.hash(userId.toString(),10);
         //todo config mail for usage
+        console.log('hashedToken:',hashedToken);
+        console.log('email:',email);
+        console.log('emailType:',emailType);
+        console.log('userId:',userId);
+        console.log(typeof email);
         if(emailType==='VERIFY'){
-            await User.findByIdAndUpdate(userId,{verifyToken:hashedToken, verifyTokenExpiry:Date.now()+3600000});
+            const updatedUser=await User.findByIdAndUpdate(userId,
+                {$set:
+                    {verifyToken:hashedToken, 
+                        verifyTokenExpiry:new Date(Date.now()+
+                        3600000)}});
+            console.log('updatedUser:',updatedUser);
         }
         else if(emailType==='RESET'){
             await User.findByIdAndUpdate
-            (userId,{forgotPasswordToken:hashedToken, forgotPasswordTokenExpiry:Date.now()+3600000});
+            (userId,
+                {$set:{forgotPasswordToken:hashedToken,
+                     forgotPasswordTokenExpiry:new Date(Date.now()+
+                     3600000)}});
         }
 
  
