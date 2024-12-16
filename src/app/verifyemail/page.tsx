@@ -5,17 +5,19 @@ import { useState } from "react";
 // import { useRouter } from "next/navigation";
 import Link from "next/link";
 
-export default function VerifyEmailPage() {
+export default function VerifyEmailPage({ params }: { params: { id: string } }) {
 
     // const router=useRouter();
 
+    // Remove id if not used
+    const { id } = params; // Access id directly from params
     const [token, setToken] = useState<string>('');
     const [verified, setVerified] = useState(false);
     const [error, setError] = useState(false);
 
     const verifyUserEmail = async () => {
         try {
-            await axios.post("/api/users/verifyemail", { token });
+            await axios.post("/api/users/verifyemail", { token, id }); // Include id in the request
             setVerified(true);
             setError(false); 
         } catch (error: unknown) {
