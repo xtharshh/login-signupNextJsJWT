@@ -14,4 +14,4 @@ const ProfilePage = async (props: { params: Promise<{ id: string | null}> }) => 
     );
 };
 
-export default ProfilePage;
+export default ProfilePage;
