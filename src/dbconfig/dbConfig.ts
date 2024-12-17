@@ -20,4 +20,7 @@ export async function connect() {
     }
 
 }
-    
+connect();
+if(!connect){
+    console.log('DB is not connected');
+}

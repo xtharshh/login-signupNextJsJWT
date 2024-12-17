@@ -1,14 +1,18 @@
-"use client";
+"use server";
 import React from "react";
+import PagewithToken from "./pageWithToken";
 
-
-export async function ProfilePage (props: {params: Promise<{id: string}>}) {
-    const params=await props.params;
+const ProfilePage=async (props: { params: PromiseLike<{ id: string | null}>;
+  }) => {
+    const id  = (await props.params).id;
+    if(!id){
+        return <h1>Invalid ID</h1>
+    }
     return (
         <div className="flex flex-col items-center justify-center min-h-screen py-2">
-            <h1>Profile</h1>
-            <h2 className="p-3 bg-green-500 rounded text-black">{params.id}</h2>
-        
+            <PagewithToken id={id}/>
         </div>
-    )
-}
+    );
+};
+
+export default ProfilePage;
