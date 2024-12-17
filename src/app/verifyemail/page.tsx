@@ -1,59 +1,12 @@
-"use client";
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import Link from "next/link";
+import VerifyEmailPage from '../verifyemail/VerifyUserEmail';
 
-export default function VerifyEmailPage({ params }: { params: { id: string | null } }) {
-    const [token, setToken] = useState<string>('');
-    const [verified, setVerified] = useState(false);
-    const [error, setError] = useState(false);
-    const id = params.id; // Access id directly from params
+export async function getServerSideProps(context: { params: { id: string | null; }; }) {
+    const { id } = context.params;
+    return {
+        props: { params: { id } }, // Pass the params directly as props
+    };
+}
 
-    const verifyUserEmail = async () => {
-        try {
-            await axios.post("/api/users/verifyemail", { token, id }); // Include id in the request
-            setVerified(true);
-            setError(false); 
-        } catch (error: unknown) {
-            console.log("Error in verifying email", error);
-            if (axios.isAxiosError(error) && error.response) {
-                console.log("Error response data:", error.response.data);
-                setError(true);
-            }
-        }
-    }
-    
-    useEffect(() => {
-        setError(false);
-        const urlToken = window.location.search.split("=")[1];
-        setToken(urlToken || "");
-    }, []);
-
-    useEffect(() => {
-        setError(false);
-        if (token.length > 0) {
-            verifyUserEmail();
-        }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [token]);
-
-    return( 
-        <div className="flex flex-col items-center justify-center min-h-screen py-2">
-            <h1 className="text-4xl">Verify Email</h1>
-            <h1 className="p-2 bg-orange-500 text-black">
-                {token ? `${token}` : "no token"}
-            </h1>
-            {verified && (
-                <div>
-                    <h1>Verified</h1>
-                    <Link href="/login">Login</Link>
-                </div>
-            )}
-            {error && (
-                <div>
-                    <h1>Verify Again</h1>
-                </div>
-            )}
-        </div>
-    )
+export default function VerifyEmail({ params }:{params:{id:string | null;}}) {
+    return <VerifyEmailPage params={params} />;
 }
