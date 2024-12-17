@@ -29,8 +29,8 @@ export default function LoginPage() {
             router.push("/profile");
  
         }
-        catch(error:unknown){
-            console.log("Error in signing up",error);
+        catch(error){
+            console.log("Error in signing up",error.message);
             toast.error("Error in signing up");
         }
 

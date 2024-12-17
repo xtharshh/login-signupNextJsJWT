@@ -26,7 +26,7 @@ const user=await User.findOne({
 
         return NextResponse.json({message: "Email verified successfully",success:true},{status:200});
     }
-    catch(error:any){
+    catch(error){
         console.log('Error:', error);
         return NextResponse.json({error: error.message}, {status: 500});
     }

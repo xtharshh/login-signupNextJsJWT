@@ -32,7 +32,7 @@ console.log('User Email:', savedUser.email);
         return NextResponse.json({message: "User created successfully",success:true, savedUser});
 
 
-    } catch (error:any) {
+    } catch (error) {
         console.log('Error:', error);
         return NextResponse.json({error: error.message}, {status: 500});
     }
