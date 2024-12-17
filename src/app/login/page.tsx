@@ -30,7 +30,7 @@ export default function LoginPage() {
  
         }
         catch(error){
-            console.log("Error in signing up",error.message);
+            console.log("Error in signing up",error);
             toast.error("Error in signing up");
         }
 

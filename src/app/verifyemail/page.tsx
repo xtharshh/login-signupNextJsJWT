@@ -20,7 +20,7 @@ export default function VerifyEmailPage({ params }: { params: { id: string | nul
             await axios.post("/api/users/verifyemail", { token, id }); // Include id in the request
             setVerified(true);
             setError(false); 
-        } catch (error: unknown) {
+        } catch (error) {
             console.log("Error in verifying email", error);
             if (axios.isAxiosError(error) && error.response) {
                 console.log("Error response data:", error.response.data);

@@ -25,7 +25,7 @@ export default function ProfilePage() {
             router.push("/login");
         }
         catch(error){
-            console.log("Error in logging out",error.response.data);
+            console.log("Error in logging out",error);
             toast.error("Error in logging out");
         }
     }
