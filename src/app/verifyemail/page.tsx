@@ -1,29 +1,20 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 "use client";
 import axios from "axios";
-import React, { useEffect } from "react";
-import { useState } from "react";
-// import { useRouter } from "next/navigation";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 
-const VerifyUserEmail = async (props: { params: Promise<{ id: any }> }) => {
-
-    // const router=useRouter();
-
-    // Remove id if not used
-
-    const { id } = (await props.params).id; // Access id directly from params
-     
+export default function VerifyEmailPage({ params }: { params: { id: string | null } }) {
     const [token, setToken] = useState<string>('');
     const [verified, setVerified] = useState(false);
     const [error, setError] = useState(false);
+    const id = params.id; // Access id directly from params
 
     const verifyUserEmail = async () => {
         try {
             await axios.post("/api/users/verifyemail", { token, id }); // Include id in the request
             setVerified(true);
             setError(false); 
-        } catch (error) {
+        } catch (error: unknown) {
             console.log("Error in verifying email", error);
             if (axios.isAxiosError(error) && error.response) {
                 console.log("Error response data:", error.response.data);
