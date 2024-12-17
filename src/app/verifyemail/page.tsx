@@ -5,7 +5,7 @@ import { useState } from "react";
 // import { useRouter } from "next/navigation";
 import Link from "next/link";
 
-export default function VerifyEmailPage({ params }: { params: { id: string } }) {
+export default function VerifyEmailPage({ params }: { params: { id: string | null} }) {
 
     // const router=useRouter();
 

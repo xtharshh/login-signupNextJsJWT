@@ -2,7 +2,7 @@
 import React from "react";
 import PagewithToken from "./pageWithToken";
 
-const ProfilePage = async (props: { params: Promise<{ id: string | null }> }) => {
+const ProfilePage = async (props: { params: Promise<{ id: string | null}> }) => {
     const id  = (await props.params).id;
     if(!id){
         return <h1>Invalid ID</h1>
