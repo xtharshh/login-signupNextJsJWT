@@ -4,7 +4,7 @@ import axios from 'axios';
 import { toast } from 'react-hot-toast';
 
 import {useRouter} from 'next/navigation';
-import { sendEmail } from '@/helpers/mailer';
+
 import Link from 'next/link';
 
 export default function SignupPage() {
@@ -29,7 +29,7 @@ export default function SignupPage() {
             router.push("/login");
  
         }
-        catch(error:any){
+        catch(error:unknown){
             console.log("Error in signing up",error);
             toast.error("Error in signing up");
         }

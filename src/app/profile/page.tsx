@@ -20,7 +20,7 @@ export default function ProfilePage() {
     }
     const logout=async()=>{
         try{
-            const res=await axios.get("/api/users/logout");
+            await axios.get("/api/users/logout");
             toast.success("User logged out successfully");
             router.push("/login");
         }

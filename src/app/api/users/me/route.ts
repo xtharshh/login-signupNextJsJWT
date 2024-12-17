@@ -2,7 +2,7 @@ import {connect} from '@/dbconfig/dbConfig';
 import User from '@/models/userModel';
 import { NextRequest, NextResponse } from 'next/server';
 
-import { sendEmail } from '@/helpers/mailer';
+
 import { getDataFromToken } from '@/helpers/getDataFromToken';
 connect();
 
