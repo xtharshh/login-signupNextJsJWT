@@ -1,23 +1,18 @@
-import { GetServerSideProps } from 'next';
 import VerifyEmailPage from '../VerifyUserEmail';
+import axios from 'axios';
+export async function generateStaticParams() {
+    const response = await axios.get('/api/users'); // Fetch user data or simulate it
+    const users = response.data;
 
-type Params = {
-    id: string;
+    return users.map((user: { id: string }) => ({
+        params: { id: user.id },
+    }));
 }
 
-type VerifyEmailProps = {
-    paramsPromise: Promise<Params>;
-};
-
-export const getServerSideProps: GetServerSideProps = async (context) => {
-    const { id } = context.params as Params;
-    const paramsPromise = Promise.resolve({ id }); // Simulate async fetch
-
-    return {
-        props: { paramsPromise }, // Pass the params promise as props
-    };
+type PageProps = {
+    params: { id: string };
 }
 
-export default function VerifyEmail({ paramsPromise }: VerifyEmailProps) {
-    return <VerifyEmailPage paramsPromise={paramsPromise} />;
+export default function Page({ params }: PageProps) {
+    return <VerifyEmailPage params={params} />;
 }

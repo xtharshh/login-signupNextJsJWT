@@ -8,23 +8,13 @@ type Params = {
 };
 
 type VerifyEmailPageProps = {
-    paramsPromise: Promise<Params>;
+    params: Params;
 };
 
-export default function VerifyEmailPage({ paramsPromise }: VerifyEmailPageProps) {
-    const [params, setParams] = useState<Params>({ id: null });
+export default function VerifyEmailPage({ params }: VerifyEmailPageProps) {
     const [token, setToken] = useState<string>('');
     const [verified, setVerified] = useState(false);
     const [error, setError] = useState(false);
-
-    useEffect(() => {
-        paramsPromise.then((resolvedParams) => {
-            setParams(resolvedParams);
-        }).catch((err) => {
-            console.error("Error resolving params promise:", err);
-        });
-    }, [paramsPromise]);
-
     const { id } = params; // Destructure id from params
 
     const verifyUserEmail = async () => {
