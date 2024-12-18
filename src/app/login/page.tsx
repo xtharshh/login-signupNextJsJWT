@@ -21,7 +21,7 @@ export default function LoginPage() {
     const onLogin=async()=>{
         try{
             setLoading(true);
-            const response = await axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/users/login`, user);
+            const response = await axios.post("/api/users/login", user);
             //user taken frm the above usestate of email username and password
             console.log("User Login successfully",response);
             toast.success("User login successfully");

@@ -29,7 +29,7 @@ export default function ProfilePage() {
     const logout = async () => {
         try {
             setLoadingLogout(true);
-            await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/users/logout`); // Use base URL
+            await axios.get("/api/users/logout"); // Use base URL
             toast.success("User logged out successfully");
             router.push("/login");
         } catch (error) {

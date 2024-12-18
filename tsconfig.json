@@ -34,7 +34,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts"
-, "../myfirstapp/VerifyUserEmail.tsx"  ],
+, "../loginsignup - Copy/VerifyUserEmail.tsx"  ],
   "exclude": [
     "node_modules"
   ]
