@@ -21,7 +21,7 @@ export async function generateStaticParams() {
     }));
 }
 
-export default async function Page({ params }: PageProps) {
+export default function Page({ params }: PageProps) {
     const { id } = params;
 
     // Validate the id (if necessary)
