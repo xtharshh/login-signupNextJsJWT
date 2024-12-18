@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import {connect} from '@/dbconfig/dbConfig';
 import { NextRequest, NextResponse } from 'next/server';
 
