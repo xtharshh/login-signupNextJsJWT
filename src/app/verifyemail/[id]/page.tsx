@@ -1,4 +1,4 @@
-import VerifyEmailPage from '../verifyemail/VerifyUserEmail';
+import VerifyEmailPage from '../VerifyUserEmail';
 import axios from 'axios';
 
 type Params = {
@@ -7,7 +7,7 @@ type Params = {
 
 export async function generateStaticParams() {
     // Simulate fetching all user IDs or use actual fetching logic
-    const response = await axios.get('https://jsonplaceholder.typicode.com/users');
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/users`);
     const users = response.data;
 
     return users.map((user: { id: string }) => ({
