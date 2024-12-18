@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 
 type Params = {
-    id: string | null;
+    id: string;
 };
 
 type VerifyEmailPageProps = {

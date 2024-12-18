@@ -4,6 +4,6 @@ import VerifyEmailPage from '../verifyemail/VerifyUserEmail';
 
 
 
-export default function VerifyEmail({ params }:{params:{id:string | null;}}) {
+export default function VerifyEmail({ params }:{params:{id: string}}) {
     return <VerifyEmailPage params={params} />;
 }
