@@ -12,7 +12,7 @@ type PageProps = {
 
 export async function generateStaticParams() {
     // Simulate fetching all user IDs or use actual fetching logic
-    const response = await axios.get('/api/users');
+    const response = await axios.get('http://localhost:3000/api/users');
     
     const users = response.data;
 
