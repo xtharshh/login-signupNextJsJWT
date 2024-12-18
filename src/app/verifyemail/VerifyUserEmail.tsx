@@ -3,6 +3,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 
+
 type Params = {
     id: string | null;
 };
@@ -19,7 +20,7 @@ export default function VerifyEmailPage({ params }: VerifyEmailPageProps) {
 
     const verifyUserEmail = async () => {
         try {
-            await axios.post("/api/users/verifyemail", { token, id }); // Include id in the request
+            await axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/users/verifyemail`, { token, id }); // Use base URL
             setVerified(true);
             setError(false); 
         } catch (error) {
