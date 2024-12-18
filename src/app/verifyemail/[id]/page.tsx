@@ -7,7 +7,7 @@ type Params = {
 }
 
 type PageProps = {
-    params: Params;
+    params: Promise<Params>;
 }
 
 export async function generateStaticParams() {
@@ -21,8 +21,8 @@ export async function generateStaticParams() {
     }));
 }
 
-export default function Page({ params }: PageProps) {
-    const { id } = params;
+export default async function Page({ params }: PageProps) {
+    const { id } = await params; // Await the params to access id
 
     // Validate the id (if necessary)
     if (!id) {
