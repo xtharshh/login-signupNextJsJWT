@@ -21,7 +21,7 @@ export default function SignupPage() {
     const onSignup=async()=>{
         try{
             setLoading(true);
-            const response = await axios.post("/api/users/signup", user);
+            const response = await axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/users/signup`, user);
             //user taken frm the above usestate of email username and password
             console.log("User signed up successfully",response);
             toast.success("User signed up successfully");
